@@ -22,11 +22,14 @@ mobileMenu.querySelectorAll('a').forEach(a => {
 
 /* HERO SLIDER */
 (function () {
-  const slides      = document.querySelectorAll('.hero-slide');
-  const panelSlides = document.querySelectorAll('.hero-panel-slide');
-  const counterEl   = document.getElementById('heroCounter');
+  const slides    = document.querySelectorAll('.hero-slide');
+  const dots      = document.querySelectorAll('.hero-dot');
+  const thumbs    = document.querySelectorAll('.hero-thumb');
+  const counterEl = document.getElementById('heroCounter');
+  const progressBar = document.getElementById('heroProgressBar');
+  const INTERVAL  = 5000;
   const nums = ['01','02','03'];
-  let current = 0, timer;
+  let current = 0, timer, progressTimer, progressStart;
 
   function updateCounter(i) {
     if (!counterEl) return;
@@ -35,7 +38,7 @@ mobileMenu.querySelectorAll('a').forEach(a => {
       cur.style.opacity = '0';
       cur.style.transform = 'translateY(-8px)';
       setTimeout(() => {
-        cur.textContent = nums[i] || String(i+1).padStart(2,'0');
+        cur.textContent = nums[i] || String(i + 1).padStart(2, '0');
         cur.style.transition = 'opacity 0.4s, transform 0.4s';
         cur.style.opacity = '1';
         cur.style.transform = 'translateY(0)';
@@ -43,20 +46,56 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     }
   }
 
+  function startProgress() {
+    if (!progressBar) return;
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${INTERVAL}ms linear`;
+        progressBar.style.width = '100%';
+      });
+    });
+  }
+
   function goTo(i) {
     slides[current].classList.remove('active');
-    if (panelSlides[current]) panelSlides[current].classList.remove('active');
+    dots[current]?.classList.remove('active');
+    thumbs[current]?.classList.remove('active');
     current = (i + slides.length) % slides.length;
     slides[current].classList.add('active');
-    if (panelSlides[current]) panelSlides[current].classList.add('active');
+    dots[current]?.classList.add('active');
+    thumbs[current]?.classList.add('active');
     updateCounter(current);
+    startProgress();
   }
+
   function next() { goTo(current + 1); }
   function prev() { goTo(current - 1); }
-  function startAuto() { clearInterval(timer); timer = setInterval(next, 5000); }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+    startProgress();
+  }
 
   document.getElementById('heroNext').addEventListener('click', () => { next(); startAuto(); });
   document.getElementById('heroPrev').addEventListener('click', () => { prev(); startAuto(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(parseInt(dot.dataset.index));
+      startAuto();
+    });
+  });
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      goTo(parseInt(thumb.dataset.index));
+      startAuto();
+    });
+  });
+
   startAuto();
 })();
 
@@ -151,11 +190,11 @@ if (marqueeTrack) {
     const y = (e.clientY - top)  / height - 0.5;
     slides.forEach(s => {
       s.style.transform = s.classList.contains('active')
-        ? 'scale(1) translate(' + (x * 12) + 'px,' + (y * 8) + 'px)'
-        : 'scale(1.05)';
+        ? `scale(1) translate(${x * 10}px, ${y * 7}px)`
+        : 'scale(1.08)';
     });
   });
   hero.addEventListener('mouseleave', () => {
-    slides.forEach(s => { s.style.transform = s.classList.contains('active') ? 'scale(1)' : 'scale(1.05)'; });
+    slides.forEach(s => { s.style.transform = s.classList.contains('active') ? 'scale(1)' : 'scale(1.08)'; });
   });
 })();
