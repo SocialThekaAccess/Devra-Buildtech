@@ -22,52 +22,17 @@ mobileMenu.querySelectorAll('a').forEach(a => {
 
 /* HERO SLIDER */
 (function () {
-  const slides    = document.querySelectorAll('.hero-slide');
-  const dots      = document.querySelectorAll('.hero-dot');
-  const thumbs    = document.querySelectorAll('.hero-thumb');
-  const counterEl = document.getElementById('heroCounter');
-  const progressBar = document.getElementById('heroProgressBar');
-  const INTERVAL  = 5000;
-  const nums = ['01','02','03'];
-  let current = 0, timer, progressTimer, progressStart;
-
-  function updateCounter(i) {
-    if (!counterEl) return;
-    const cur = counterEl.querySelector('.counter-current');
-    if (cur) {
-      cur.style.opacity = '0';
-      cur.style.transform = 'translateY(-8px)';
-      setTimeout(() => {
-        cur.textContent = nums[i] || String(i + 1).padStart(2, '0');
-        cur.style.transition = 'opacity 0.4s, transform 0.4s';
-        cur.style.opacity = '1';
-        cur.style.transform = 'translateY(0)';
-      }, 200);
-    }
-  }
-
-  function startProgress() {
-    if (!progressBar) return;
-    progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        progressBar.style.transition = `width ${INTERVAL}ms linear`;
-        progressBar.style.width = '100%';
-      });
-    });
-  }
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  const INTERVAL = 5000;
+  let current = 0, timer;
 
   function goTo(i) {
     slides[current].classList.remove('active');
     dots[current]?.classList.remove('active');
-    thumbs[current]?.classList.remove('active');
     current = (i + slides.length) % slides.length;
     slides[current].classList.add('active');
     dots[current]?.classList.add('active');
-    thumbs[current]?.classList.add('active');
-    updateCounter(current);
-    startProgress();
   }
 
   function next() { goTo(current + 1); }
@@ -76,22 +41,11 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   function startAuto() {
     clearInterval(timer);
     timer = setInterval(next, INTERVAL);
-    startProgress();
   }
-
-  document.getElementById('heroNext').addEventListener('click', () => { next(); startAuto(); });
-  document.getElementById('heroPrev').addEventListener('click', () => { prev(); startAuto(); });
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       goTo(parseInt(dot.dataset.index));
-      startAuto();
-    });
-  });
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      goTo(parseInt(thumb.dataset.index));
       startAuto();
     });
   });
