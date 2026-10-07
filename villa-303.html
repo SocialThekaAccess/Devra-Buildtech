@@ -7,7 +7,7 @@
   <meta name="description" content="Villa 303 — A 500 sqyd residential villa in PH-1 Cassia, New Chandigarh. Contemporary facade with resort-like character and refined luxury interiors." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/projects/res-villa-303.jpg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,6 +30,7 @@
 
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-sans); background: var(--black); color: var(--white); overflow-x: hidden; }
+    em, i { font-style: normal !important; }
     img { display: block; max-width: 100%; height: auto; }
     img[loading="lazy"] { opacity: 0; transition: opacity 0.3s; }
     img[loading="lazy"].loaded { opacity: 1; }
@@ -197,7 +198,7 @@
       font-size: clamp(1.6rem, 2.8vw, 2.4rem);
       font-weight: 600; line-height: 1.18; color: var(--white);
     }
-    .desc-heading em { font-style: italic; color: var(--gray-300); }
+    .desc-heading em { font-style: normal; color: var(--white); }
     .desc-para {
       font-family: var(--font-sans);
       font-size: clamp(1rem, 1.5vw, 1.2rem);
