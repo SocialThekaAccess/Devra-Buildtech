@@ -65,17 +65,15 @@ a { text-decoration: none; color: inherit; }
 
 /* ─── HERO ───────────────────────────── */
 .hero {
-  position: relative; width: 100%; height: 100vh;
-  min-height: 640px; overflow: hidden;
+  position: relative; width: 100%;
+  height: 100vh; min-height: 560px; overflow: hidden;
 }
 .hero-img {
   position: absolute; inset: 0; z-index: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  transform: scale(1.04);
-  animation: heroZoom 12s var(--ease-out) forwards;
+  object-fit: cover;
+  object-position: center 70%;   /* image position slider: 0% = upar, 100% = neeche */
 }
-@keyframes heroZoom { to { transform: scale(1); } }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(
@@ -376,7 +374,7 @@ a { text-decoration: none; color: inherit; }
 }
 @media (max-width: 768px) {
   .navbar { padding: 0 24px; }
-  .hero-img { min-height: 360px; object-fit: cover; }
+  .hero-img { object-position: 60% center; }
   .hero-content { padding: 0 6% 48px; }
   .description, .gallery { padding-left: 6%; padding-right: 6%; }
   .gallery-row-2, .gallery-row-asym { grid-template-columns: 1fr; }
