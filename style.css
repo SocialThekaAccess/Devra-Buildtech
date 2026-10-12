@@ -629,6 +629,10 @@ a { text-decoration: none; color: inherit; }
 .pg-grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+.pg-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 
 /* Project card */
 .pg-card {
@@ -724,7 +728,7 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 768px) {
   .projects-grid { padding: 0 6% 64px; }
-  .pg-grid, .pg-grid-3 { grid-template-columns: 1fr; }
+  .pg-grid, .pg-grid-3, .pg-grid-4 { grid-template-columns: 1fr; }
 }
 @media (max-width: 1024px) {
   .pg-grid-3 { grid-template-columns: repeat(2, 1fr); }
