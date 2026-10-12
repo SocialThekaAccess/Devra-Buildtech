@@ -117,6 +117,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
       window.scrollTo({ top, behavior: 'smooth' });
+      
+      // Remove hash from URL without breaking smooth scroll
+      history.replaceState(null, null, window.location.pathname);
     }
   });
 });
