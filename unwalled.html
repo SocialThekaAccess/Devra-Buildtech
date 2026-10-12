@@ -3,154 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UNWALLED | Residential Project | Devra Build Tech</title>
-  <meta name="description" content="UNWALLED - A 3,500 sq. ft. residential project in New Chandigarh featuring commanding views and sophisticated design execution." />
-  <link rel="stylesheet" href="style.css" />
+  <title>UNWALLED — Residential Project | Devra Build Tech</title>
+  <meta name="description" content="UNWALLED — A 3,500 sq. ft. residential project in New Chandigarh with commanding views of the Shivalik foothills and sophisticated design." />
+  <link rel="stylesheet" href="unwalled.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  
-  <!-- Remove hash from URL immediately on load -->
-  <script>
-    if (window.location.hash) {
-      history.replaceState(null, null, window.location.pathname);
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <nav class="navbar scrolled" id="navbar">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-text">DEVRA BUILD TECH</span>
+  <!-- ─── NAVBAR ─────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo-text">Devra Build Tech</a>
+    <a href="index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+      All Projects
     </a>
-    <div class="nav-links">
-      <a href="index.html#projects-grid-section">Projects</a>
-    </div>
-    <a href="index.html#contact-section" class="nav-cta">Contact Us</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="index.html#contact-section" class="nav-cta">Start a Project</a>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html#projects-grid-section">Projects</a>
-    <a href="index.html#contact-section">Contact Us</a>
+  <!-- ─── HERO ───────────────────────────────── -->
+  <section class="hero">
+    <img src="assets/projects/UNWALLED1.png" alt="UNWALLED — New Chandigarh" class="hero-img" />
+    <div class="hero-overlay"></div>
+    <div class="hero-overlay-left"></div>
+    <div class="hero-content">
+      <div class="hero-title-block">
+        <span class="hero-category">Residential &nbsp;/&nbsp; New Chandigarh</span>
+        <h1 class="hero-title">UNWALLED</h1>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── META BAR ───────────────────────────── -->
+  <div class="meta-bar">
+    <div class="meta-inner">
+      <div class="meta-item">
+        <span class="meta-label">Location</span>
+        <span class="meta-value">New Chandigarh</span>
+      </div>
+      <div class="meta-item" style="padding-left:48px;">
+        <span class="meta-label">Project Size</span>
+        <span class="meta-value">3,500 sq. ft.</span>
+      </div>
+      <div class="meta-item" style="padding-left:48px;">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2026</span>
+      </div>
+      <div class="meta-item" style="padding-left:48px;">
+        <span class="meta-label">Category</span>
+        <span class="meta-value">Residential</span>
+      </div>
+      <div class="meta-gap"></div>
+    </div>
   </div>
 
-  <!-- PROJECT HERO -->
-  <section class="project-hero">
-    <div class="project-hero-inner">
-      <div class="project-hero-content reveal">
-        <span class="label">Residential Project</span>
-        <h1>UNWALLED</h1>
-        <div class="project-meta-grid">
-          <div class="project-meta-item">
-            <span class="meta-label">Location</span>
-            <span class="meta-value">New Chandigarh</span>
-          </div>
-          <div class="project-meta-item">
-            <span class="meta-label">Project Size</span>
-            <span class="meta-value">3,500 sq. ft.</span>
-          </div>
-          <div class="project-meta-item">
-            <span class="meta-label">Year</span>
-            <span class="meta-value">2026</span>
-          </div>
-          <div class="project-meta-item">
-            <span class="meta-label">Category</span>
-            <span class="meta-value">Residential</span>
-          </div>
+  <!-- ─── DESCRIPTION ─────────────────────────── -->
+  <section class="description">
+    <div class="desc-inner">
+      <div class="desc-left reveal">
+        <span class="desc-tag">Project Overview</span>
+        <h2 class="desc-heading">
+          Commanding views,<br/>
+          <em>refined</em> spaces,<br/>
+          resort-like ambiance
+        </h2>
+      </div>
+      <div class="desc-right reveal delay-1">
+        <p class="desc-para">
+          Strategically positioned in New Chandigarh's most coveted sector, UNWALLED enjoys commanding views of the Shivalik foothills while maintaining exceptional connectivity to urban amenities. The site's natural topography has been thoughtfully preserved and enhanced to create a distinctive sense of place. The masterplan orchestrates a sophisticated hierarchy of public, semi-private, and intimate spaces. Premium residences are positioned to maximize privacy while maintaining visual connection to beautifully landscaped courtyards and linear parks. Circulation pathways are designed as experiential journeys, with carefully framed views and unexpected spatial moments creating a resort-like ambiance throughout the development.
+        </p>
+        <div class="desc-divider"></div>
+        <p class="desc-para">
+          An refined material palette featuring natural stone cladding, large-format architectural glass, warm timber accents, and sophisticated metal detailing. The landscape design incorporates mature specimen trees, reflective water features, and indigenous plantings to create a serene, established character from day one. Each residence benefits from optimal solar orientation, with living spaces positioned to capture natural light throughout the day while minimizing heat gain. Deep balconies and projected louvers provide passive shading, while cross-ventilation strategies ensure fresh air circulation. Common areas feature naturally lit atriums and wind-channeling courtyards that reduce reliance on mechanical systems. UNWALLED represents the pinnacle of luxury housing execution, with meticulous attention to every detail from structural engineering to landscape installation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ──────────────────────────────── -->
+  <section class="gallery">
+    <div class="gallery-inner">
+
+      <span class="gallery-label reveal">Gallery — 7 Images</span>
+
+      <!-- Row 1: Full-width hero -->
+      <div class="gallery-hero reveal" onclick="openLightbox(0)">
+        <img src="assets/projects/UNWALLED1.png" alt="UNWALLED — Exterior view" loading="lazy" />
+      </div>
+
+      <!-- Row 2: 2-col equal -->
+      <div class="gallery-row-2 reveal delay-1">
+        <div class="gitem wide" onclick="openLightbox(1)">
+          <img src="assets/projects/UNWALLED2.png" alt="UNWALLED — Architecture detail" loading="lazy" />
+        </div>
+        <div class="gitem wide" onclick="openLightbox(2)">
+          <img src="assets/projects/UNWALLED3.png" alt="UNWALLED — Landscape view" loading="lazy" />
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJECT OVERVIEW -->
-  <section class="project-overview">
-    <div class="project-overview-inner">
-      <div class="overview-text reveal">
-        <h3>Overview</h3>
-        <p>Strategically positioned in New Chandigarh's most coveted sector, UNWALLED enjoys commanding views of the Shivalik foothills while maintaining exceptional connectivity to urban amenities. The site's natural topography has been thoughtfully preserved and enhanced to create a distinctive sense of place. The masterplan orchestrates a sophisticated hierarchy of public, semi-private, and intimate spaces. Premium residences are positioned to maximize privacy while maintaining visual connection to beautifully landscaped courtyards and linear parks. Circulation pathways are designed as experiential journeys, with carefully framed views and unexpected spatial moments creating a resort-like ambiance throughout the development.</p>
-        
-        <p>An refined material palette featuring natural stone cladding, large-format architectural glass, warm timber accents, and sophisticated metal detailing. The landscape design incorporates mature specimen trees, reflective water features, and indigenous plantings to create a serene, established character from day one. Each residence benefits from optimal solar orientation, with living spaces positioned to capture natural light throughout the day while minimizing heat gain. Deep balconies and projected louvers provide passive shading, while cross-ventilation strategies ensure fresh air circulation. Common areas feature naturally lit atriums and wind-channeling courtyards that reduce reliance on mechanical systems. UNWALLED represents the pinnacle of luxury housing execution, with meticulous attention to every detail from structural engineering to landscape installation. Advanced construction methodologies ensure precision in facade work and interior finishes, while sustainable building practices minimize environmental impact. The phased delivery approach allows for continuous quality control and refinement throughout construction.</p>
+      <!-- Row 3: 3-col -->
+      <div class="gallery-row-3 reveal delay-1">
+        <div class="gitem std" onclick="openLightbox(3)">
+          <img src="assets/projects/UNWALLED4.png" alt="UNWALLED — Interior space" loading="lazy" />
+        </div>
+        <div class="gitem std" onclick="openLightbox(4)">
+          <img src="assets/projects/UNWALLED5.png" alt="UNWALLED — Living area" loading="lazy" />
+        </div>
+        <div class="gitem std" onclick="openLightbox(5)">
+          <img src="assets/projects/UNWALLED6.png" alt="UNWALLED — Design detail" loading="lazy" />
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJECT GALLERY -->
-  <section class="project-gallery">
-    <div class="project-gallery-inner">
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED1.png" alt="UNWALLED - Exterior View" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED2.png" alt="UNWALLED - Architecture Detail" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED3.png" alt="UNWALLED - Interior Space" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED4.png" alt="UNWALLED - Living Area" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED5.png" alt="UNWALLED - Design Detail" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED6.png" alt="UNWALLED - Landscape View" loading="lazy" />
-      </div>
-      
-      <div class="gallery-item reveal">
-        <img src="assets/projects/UNWALLED7.png" alt="UNWALLED - Complete View" loading="lazy" />
+      <!-- Row 4: Single -->
+      <div class="gallery-hero reveal delay-2" onclick="openLightbox(6)">
+        <img src="assets/projects/UNWALLED7.png" alt="UNWALLED — Complete view" loading="lazy" />
       </div>
 
     </div>
   </section>
 
-  <!-- PROJECT CTA -->
+  <!-- ─── LIGHTBOX ─────────────────────────────── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+    <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <button class="lb-arrow lb-prev" onclick="lbNav(-1)" aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="lb-img-wrap">
+      <img class="lb-img" id="lbImg" src="" alt="" />
+    </div>
+    <button class="lb-arrow lb-next" onclick="lbNav(1)" aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <span class="lb-counter" id="lbCounter"></span>
+  </div>
+
+  <!-- ─── CTA ───────────────────────────────────── -->
   <section class="project-cta">
-    <div class="project-cta-inner reveal">
-      <h3>Interested in a similar project?</h3>
-      <p>Let's discuss how we can bring your vision to life with the same level of precision and care.</p>
-      <a href="index.html#contact-section" class="btn btn-filled">Get in touch</a>
-    </div>
+    <span class="project-cta-tag">Ready to Build?</span>
+    <h2>Let's create your space</h2>
+    <p>From concept to completion — every project handled with the same precision and care.</p>
+    <a href="index.html#contact-section" class="btn btn-filled">Start a Project</a>
+    <a href="index.html#projects-section" class="btn btn-outline">View All Projects</a>
   </section>
 
+  <!-- ─── FOOTER ───────────────────────────────── -->
   <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo-col">
-        <span class="footer-logo-text">DEVRA BUILD TECH</span>
-        <p class="footer-tagline">Your ideas matter. Together, we turn them into durable, high-performing built spaces.</p>
-        <a href="https://mail.google.com/mail/?view=cm&to=info@devrabuildtech.in&su=Project%20Enquiry" target="_blank" rel="noopener" class="btn btn-outline">Get in touch</a>
-      </div>
-      <div class="footer-nav-col">
-        <h6>Navigation</h6>
-        <a href="index.html#projects-grid-section">Projects</a>
-      </div>
-      <div class="footer-contact-col">
-        <h6>Contact us</h6>
-        <a href="https://mail.google.com/mail/?view=cm&to=info@devrabuildtech.in&su=Project%20Enquiry" target="_blank" rel="noopener">info@devrabuildtech.in</a>
-        <a href="tel:+919779662286">+91 9779662286</a>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2025 Devra Build Tech. All rights reserved.</span>
-    </div>
+    <span class="footer-logo">Devra Build Tech</span>
+    <span class="footer-copy">&copy; 2025 Devra Build Tech. All rights reserved.</span>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Lightbox
+    const images = [
+      'assets/projects/UNWALLED1.png',
+      'assets/projects/UNWALLED2.png',
+      'assets/projects/UNWALLED3.png',
+      'assets/projects/UNWALLED4.png',
+      'assets/projects/UNWALLED5.png',
+      'assets/projects/UNWALLED6.png',
+      'assets/projects/UNWALLED7.png',
+    ];
+    const alts = [
+      'Exterior view', 'Architecture detail', 'Landscape view',
+      'Interior space', 'Living area', 'Design detail', 'Complete view'
+    ];
+    let current = 0;
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCounter = document.getElementById('lbCounter');
+
+    function openLightbox(idx) {
+      current = idx;
+      lbImg.src = images[current];
+      lbImg.alt = 'UNWALLED — ' + alts[current];
+      lbCounter.textContent = (current + 1) + ' / ' + images.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+    function closeLightboxOnBg(e) {
+      if (e.target === lb) closeLightbox();
+    }
+    function lbNav(dir) {
+      current = (current + dir + images.length) % images.length;
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src = images[current];
+        lbImg.alt = 'UNWALLED — ' + alts[current];
+        lbCounter.textContent = (current + 1) + ' / ' + images.length;
+        lbImg.style.opacity = '1';
+      }, 160);
+    }
+    lbImg.style.transition = 'opacity 0.16s';
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    });
+  </script>
 </body>
 </html>
