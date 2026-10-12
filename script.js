@@ -105,10 +105,14 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   items.forEach(item => observer.observe(item));
 })();
 
-/* SMOOTH SCROLL */
+/* SMOOTH SCROLL - only for internal section links */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+    const href = anchor.getAttribute('href');
+    // Skip if it's just "#" or if link has .pg-card class (project cards)
+    if (href === '#' || anchor.closest('.pg-card')) return;
+    
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
