@@ -121,14 +121,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
       
-      // Remove hash from URL - use full URL without hash
+      // Remove hash from URL IMMEDIATELY before scrolling
       const cleanUrl = window.location.origin + window.location.pathname;
       history.replaceState(null, null, cleanUrl);
+      
+      const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   });
+});
+
+/* WATCH FOR HASH CHANGES AND REMOVE THEM */
+window.addEventListener('hashchange', () => {
+  const cleanUrl = window.location.origin + window.location.pathname;
+  history.replaceState(null, null, cleanUrl);
 });
 
 /* MARQUEE PAUSE ON HOVER */
