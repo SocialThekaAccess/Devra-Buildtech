@@ -1,5 +1,11 @@
 'use strict';
 
+/* REMOVE HASH FROM URL ON PAGE LOAD */
+if (window.location.hash) {
+  const cleanUrl = window.location.origin + window.location.pathname;
+  history.replaceState(null, null, cleanUrl);
+}
+
 /* NAVBAR SCROLL */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
