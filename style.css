@@ -12,6 +12,7 @@
   --gray-100:   #e5e5e5;
   --off-white:  #f4f4f4;
   --white:      #ffffff;
+  --gold:       #c9a96e;
 
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans:  'Inter', system-ui, sans-serif;
@@ -42,6 +43,7 @@ a { text-decoration: none; color: inherit; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal.delay-1 { transition-delay: 0.15s; }
 .reveal.delay-2 { transition-delay: 0.3s; }
+.reveal.delay-3 { transition-delay: 0.45s; }
 
 .mt-24 { margin-top: 24px; }
 
@@ -161,7 +163,7 @@ a { text-decoration: none; color: inherit; }
   background: var(--black);
 }
 
-/* Slides — FIXED: image now fills full width edge to edge (no side bars) */
+/* Slides — image fills full width edge to edge (no side bars) */
 .hero-slider { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .hero-slide {
   position: absolute; inset: 0;
@@ -197,7 +199,7 @@ a { text-decoration: none; color: inherit; }
 /* Hero content */
 .hero-content {
   position: absolute;
-  left: 8%; bottom: 80px;
+  left: 8%; bottom: 170px;
   z-index: 3; max-width: 540px;
 }
 .hero-label {
@@ -246,11 +248,86 @@ a { text-decoration: none; color: inherit; }
   height: 28px; border-radius: 3px;
 }
 
+
+/* ─── HERO STAGES (LUXURY GLASS CARDS) ───────────────── */
+.hero-stages {
+  position: absolute;
+  bottom: 24px;
+  left: 8%;
+  right: 8%;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.stage-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(12,12,12,0.72) 0%, rgba(12,12,12,0.5) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,169,110,0.3);
+  border-radius: 1px;
+  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+.stage-box:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -18px rgba(201,169,110,0.4);
+}
+
+/* Image shown in full 4:3 — no cropping of the photo */
+.stage-thumb {
+  flex: 0 0 auto;
+  width: 40%;
+  max-width: 124px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--gray-900);
+}
+.stage-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform 0.8s var(--ease-out);
+}
+.stage-box:hover .stage-thumb img { transform: scale(1.07); }
+
+.stage-info { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding-right: 6px; }
+.stage-num {
+  font-family: var(--font-serif);
+  font-style: italic; font-weight: 400;
+  font-size: 1.05rem; line-height: 1;
+  color: var(--gold);
+}
+.stage-label {
+  font-family: var(--font-sans);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+@media (max-width: 1024px) {
+  .stage-box { gap: 10px; }
+  .stage-label { font-size: 9px; letter-spacing: 0.14em; }
+}
+@media (max-width: 768px) {
+  .hero-stages { left: 6%; right: 6%; bottom: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .stage-box { padding: 6px; gap: 10px; }
+  .stage-thumb { width: 42%; max-width: 72px; }
+  .stage-num { font-size: 0.9rem; }
+  .stage-label { font-size: 8.5px; letter-spacing: 0.1em; }
+}
+
 /* ─── FADE ANIMATIONS ────────────────────────────────── */
 .fade-in-up { opacity: 0; transform: translateY(26px); animation: fadeInUp 0.9s var(--ease-out) forwards; }
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
 /* ─── COLLECTION (PORTFOLIO TABS) ────────────────────── */
@@ -582,15 +659,17 @@ a { text-decoration: none; color: inherit; }
   .services-inner { grid-template-columns: 1fr; gap: 48px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .footer-logo-col { grid-column: 1 / -1; }
-  .hero-content { left: 5%; bottom: 48px; top: auto; }
+  .hero-content { left: 5%; bottom: 160px; top: auto; }
 }
 @media (max-width: 768px) {
   .navbar { padding: 0 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .hero { min-height: 100svh; }
-  .hero-content { left: 6%; max-width: 88%; bottom: 60px; top: auto; }
+  .hero-content { left: 6%; max-width: 88%; bottom: 190px; top: auto; }
   .hero-indicators { right: 14px; }
+
+
   .collection { padding: 64px 6% 36px; }
   .tab-btn { padding: 12px 14px; font-size: 10px; }
   .tab-detail-panel { padding: 22px 20px; min-height: 0; }
