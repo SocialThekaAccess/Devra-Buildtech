@@ -20,6 +20,10 @@
   --nav-h: 68px;
   --ease-out:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Hero strip sizing (FIX: image ab strip ke peeche nahi chhupegi) */
+  --thumb-ratio: 2.5;                                   /* 5:2 (original size) */
+  --stages-h: calc(25vw / var(--thumb-ratio) + 40px);   /* 4 columns */
 }
 
 html { scroll-behavior: smooth; }
@@ -163,13 +167,17 @@ a { text-decoration: none; color: inherit; }
   background: var(--black);
 }
 
-/* Slides — image fills full width edge to edge (no side bars) */
-.hero-slider { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+/* Slides — image strip ke upar wale area mein poori dikhti hai */
+.hero-slider {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  bottom: var(--stages-h);          /* FIX: strip ke peeche nahi jaayegi */
+  z-index: 0; overflow: hidden;
+}
 .hero-slide {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1.4s var(--ease-out);
@@ -181,12 +189,15 @@ a { text-decoration: none; color: inherit; }
 .hero-slide {
   transform: none !important;
   translate: none !important;
-  background-position: center center !important;
+  background-position: center 60% !important;   /* ghar poora dikhe; 50%–75% try karo */
   pointer-events: none;
 }
 
 .hero-overlay {
-  position: absolute; inset: 0; z-index: 1;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  bottom: var(--stages-h);
+  z-index: 1;
   background: linear-gradient(
     110deg,
     rgba(0,0,0,0.78) 0%,
@@ -199,7 +210,7 @@ a { text-decoration: none; color: inherit; }
 /* Hero content */
 .hero-content {
   position: absolute;
-  left: 8%; bottom: 170px;
+  left: 52px; bottom: calc(var(--stages-h) + 40px);
   z-index: 3; max-width: 540px;
 }
 .hero-label {
@@ -249,75 +260,77 @@ a { text-decoration: none; color: inherit; }
 }
 
 
-/* ─── HERO STAGES (LUXURY GLASS CARDS) ───────────────── */
+/* ─── HERO STAGES (JOINED LUXURY STRIP) ──────────────── */
 .hero-stages {
   position: absolute;
-  bottom: 24px;
-  left: 8%;
-  right: 8%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 4;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 1px;                       /* thin gold divider between images */
+  padding: 0;
+  background: rgba(201,169,110,0.35);
+  border-top: 1px solid rgba(201,169,110,0.35);
 }
 .stage-box {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
   min-width: 0;
-  padding: 8px;
-  background: linear-gradient(135deg, rgba(12,12,12,0.72) 0%, rgba(12,12,12,0.5) 100%);
+  background: rgba(12,12,12,0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(201,169,110,0.3);
-  border-radius: 1px;
-  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  transition: background 0.4s var(--ease-out);
 }
-.stage-box:hover {
-  border-color: var(--gold);
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px -18px rgba(201,169,110,0.4);
-}
+.stage-box:hover { background: rgba(12,12,12,0.92); }
 
-/* Image shown in full 4:3 — no cropping of the photo */
+/* Images touch each other and fill the container fully */
 .stage-thumb {
-  flex: 0 0 auto;
-  width: 40%;
-  max-width: 124px;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  aspect-ratio: 5 / 2;              /* original size */
   overflow: hidden;
   background: var(--gray-900);
 }
 .stage-thumb img {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  transition: transform 0.8s var(--ease-out);
+  object-fit: cover;
+  object-position: center;          /* overridden per image in HTML */
+  transition: filter 0.5s var(--ease-out);
 }
-.stage-box:hover .stage-thumb img { transform: scale(1.07); }
+.stage-box:hover .stage-thumb img { filter: brightness(1.1); }
 
-.stage-info { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding-right: 6px; }
+.stage-info {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+  padding: 9px 18px 10px;
+  border-top: 1px solid rgba(201,169,110,0.35);
+}
 .stage-num {
   font-family: var(--font-serif);
   font-style: italic; font-weight: 400;
   font-size: 1.05rem; line-height: 1;
   color: var(--gold);
+  flex-shrink: 0;
 }
 .stage-label {
   font-family: var(--font-sans);
   font-size: 10px; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  line-height: 1.5;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  line-height: 1.4;
   color: var(--white);
 }
 
 @media (max-width: 1024px) {
-  .stage-box { gap: 10px; }
-  .stage-label { font-size: 9px; letter-spacing: 0.14em; }
+  .stage-info { padding: 10px 14px 11px; gap: 10px; }
+  .stage-label { font-size: 9px; letter-spacing: 0.12em; }
 }
 @media (max-width: 768px) {
-  .hero-stages { left: 6%; right: 6%; bottom: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .stage-box { padding: 6px; gap: 10px; }
-  .stage-thumb { width: 42%; max-width: 72px; }
+  .hero-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stage-info { padding: 8px 12px 10px; gap: 8px; }
   .stage-num { font-size: 0.9rem; }
   .stage-label { font-size: 8.5px; letter-spacing: 0.1em; }
 }
@@ -659,14 +672,17 @@ a { text-decoration: none; color: inherit; }
   .services-inner { grid-template-columns: 1fr; gap: 48px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .footer-logo-col { grid-column: 1 / -1; }
-  .hero-content { left: 5%; bottom: 160px; top: auto; }
+  .hero-content { left: 5%; bottom: calc(var(--stages-h) + 30px); top: auto; }
 }
 @media (max-width: 768px) {
+  /* Mobile: strip 2x2 grid hai, isliye height double */
+  :root { --stages-h: calc(50vw / var(--thumb-ratio) * 2 + 80px); }
+
   .navbar { padding: 0 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .hero { min-height: 100svh; }
-  .hero-content { left: 6%; max-width: 88%; bottom: 190px; top: auto; }
+  .hero-content { left: 6%; max-width: 88%; bottom: calc(var(--stages-h) + 24px); top: auto; }
   .hero-indicators { right: 14px; }
 
 
