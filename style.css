@@ -666,6 +666,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────── */
+
+/* Desktop/Mobile image toggle */
+.mobile-only { display: none !important; }
+.desktop-only { display: block !important; }
+
 @media (max-width: 1024px) {
   .svc-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vision { grid-template-columns: 1fr; gap: 48px; }
@@ -678,12 +683,21 @@ a { text-decoration: none; color: inherit; }
   /* Mobile: strip 2x2 grid hai, isliye height double */
   :root { --stages-h: calc(50vw / var(--thumb-ratio) * 2 + 80px); }
 
+  /* Mobile/Desktop image toggle */
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+
   .navbar { padding: 0 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .hero { min-height: 100svh; }
   .hero-content { left: 6%; max-width: 88%; bottom: calc(var(--stages-h) + 24px); top: auto; }
   .hero-indicators { right: 14px; }
+
+  /* Mobile: house ko center mein rakhna with better positioning */
+  .hero-slide {
+    background-position: center 45% !important;
+  }
 
 
   .collection { padding: 64px 6% 36px; }
