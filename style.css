@@ -21,7 +21,7 @@
   --ease-out:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Hero strip sizing (FIX: image ab strip ke peeche nahi chhupegi) */
+  /* Hero strip sizing (JS overrides --stages-h with the exact strip height) */
   --thumb-ratio: 2.5;                                   /* 5:2 (original size) */
   --stages-h: calc(25vw / var(--thumb-ratio) + 40px);   /* 4 columns */
 }
@@ -171,7 +171,7 @@ a { text-decoration: none; color: inherit; }
 .hero-slider {
   position: absolute;
   top: 0; left: 0; right: 0;
-  bottom: var(--stages-h);          /* FIX: strip ke peeche nahi jaayegi */
+  bottom: var(--stages-h);          /* strip ke peeche nahi jaayegi */
   z-index: 0; overflow: hidden;
 }
 .hero-slide {
@@ -680,7 +680,7 @@ a { text-decoration: none; color: inherit; }
   .hero-content { left: 5%; bottom: calc(var(--stages-h) + 30px); top: auto; }
 }
 @media (max-width: 768px) {
-  /* Mobile: strip 2x2 grid hai, isliye height double */
+  /* Mobile: strip 2x2 grid hai (JS exact height set karta hai, ye sirf fallback hai) */
   :root { --stages-h: calc(50vw / var(--thumb-ratio) * 2 + 80px); }
 
   /* Mobile/Desktop image toggle */
@@ -690,7 +690,10 @@ a { text-decoration: none; color: inherit; }
   .navbar { padding: 0 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
-  .hero { min-height: 100svh; }
+
+  /* FIX: 100vh mobile par toolbar ke peeche chala jata hai, isliye svh */
+  .hero { height: 100vh; height: 100svh; min-height: 0; }
+
   .hero-content { left: 6%; max-width: 88%; bottom: calc(var(--stages-h) + 24px); top: auto; }
   .hero-indicators { right: 14px; }
 

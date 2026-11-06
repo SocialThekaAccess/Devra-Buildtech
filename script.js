@@ -178,6 +178,21 @@ if (marqueeTrack) {
   media.addEventListener('mouseleave', () => video.pause());
 })();
 
+/* HERO: match slider height exactly to the stages strip (no gap) */
+(function () {
+  const hero   = document.querySelector('.hero');
+  const stages = document.querySelector('.hero-stages');
+  if (!hero || !stages) return;
+  function sync() {
+    hero.style.setProperty('--stages-h', stages.offsetHeight + 'px');
+  }
+  sync();
+  window.addEventListener('load', sync);
+  window.addEventListener('resize', sync);
+  window.addEventListener('orientationchange', sync);
+  if (window.ResizeObserver) new ResizeObserver(sync).observe(stages);
+})();
+
 /* HERO PARALLAX */
 (function () {
   const hero   = document.querySelector('.hero');
