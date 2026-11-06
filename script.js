@@ -26,12 +26,37 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   });
 });
 
-/* HERO SLIDER */
+/* HERO SLIDER (FIXED: only cycles slides visible on current screen, preloads images) */
 (function () {
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots   = document.querySelectorAll('.hero-dot');
+  const allSlides = Array.from(document.querySelectorAll('.hero-slide'));
+  const dots = document.querySelectorAll('.hero-dot');
+  const mq = window.matchMedia('(max-width: 768px)');
   const INTERVAL = 5000;
-  let current = 0, timer;
+  let slides = [], current = 0, timer;
+
+  function preload(list) {
+    list.forEach(s => {
+      const m = s.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+      if (m) {
+        const img = new Image();
+        img.src = m[1];
+        if (img.decode) img.decode().catch(() => {});
+      }
+    });
+  }
+
+  // Use only the slides for the current screen (mobile or desktop)
+  function setup() {
+    const cls = mq.matches ? 'mobile-only' : 'desktop-only';
+    slides = allSlides.filter(s => s.classList.contains(cls));
+    if (!slides.length) return;
+    allSlides.forEach(s => s.classList.remove('active'));
+    current = 0;
+    slides[0].classList.add('active');
+    dots.forEach((d, i) => d.classList.toggle('active', i === 0));
+    preload(slides);
+    startAuto();
+  }
 
   function goTo(i) {
     slides[current].classList.remove('active');
@@ -41,12 +66,9 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     dots[current]?.classList.add('active');
   }
 
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
-
   function startAuto() {
     clearInterval(timer);
-    timer = setInterval(next, INTERVAL);
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
   }
 
   dots.forEach(dot => {
@@ -56,7 +78,9 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     });
   });
 
-  startAuto();
+  if (mq.addEventListener) mq.addEventListener('change', setup);
+  else if (mq.addListener) mq.addListener(setup);
+  setup();
 })();
 
 /* COLLECTION TABS */
@@ -117,15 +141,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const href = anchor.getAttribute('href');
     // Skip if it's just "#" or if link has .pg-card class (project cards)
     if (href === '#' || anchor.closest('.pg-card')) return;
-    
+
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      
+
       // Remove hash from URL IMMEDIATELY before scrolling
       const cleanUrl = window.location.origin + window.location.pathname;
       history.replaceState(null, null, cleanUrl);
-      
+
       const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
